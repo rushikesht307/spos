@@ -1,0 +1,9 @@
+# Compile the Java code
+javac -h . TestJNI.java
+
+# Compile the C code into a shared library
+gcc -fPIC -I /usr/lib/jvm/java-8-openjdk-amd64/include -I /usr/lib/jvm/java-8-openjdk-amd64/include/linux -o libTestJNI.so -shared TestJNI.c
+
+# Run the Java program with the correct library name and path
+java -Djava.library.path=. TestJNI
+
